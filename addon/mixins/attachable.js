@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import DS from 'ember-data';
-import { request } from 'ic-ajax';
+import { request } from 'ember-ajax';
 import {
   convertResourceObject,
   normalizeResponseHelper,
