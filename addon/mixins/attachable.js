@@ -8,6 +8,7 @@ import {
 } from 'ember-attachable/lib/serializer-response';
 
 export default Ember.Mixin.create({
+  ajax: Ember.inject.service(),
   attachmentAs: null,
   saveWithAttachment(jqXHRHeaders=null) {
     return this.createWithAttachment(jqXHRHeaders);
@@ -52,7 +53,7 @@ export default Ember.Mixin.create({
     }else{
       this._internalModel.adapterWillCommit();
     }
-    promise = request(url, {
+    promise = this.get('ajax').request(url, {
       type: this._requestType(),
       data: formData,
       dataType: 'json',
